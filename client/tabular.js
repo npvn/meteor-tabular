@@ -15,7 +15,7 @@ var tabularOnRendered = function () {
 
   template.tabular = {};
   template.tabular.data = [];
-  template.tabular.pubSelector = new ReactiveVar({}, Util.objectsAreEqual);
+  template.tabular.pubSelector = new ReactiveVar({});
   template.tabular.skip = new ReactiveVar(0);
   template.tabular.limit = new ReactiveVar(10);
   template.tabular.sort = new ReactiveVar(null, Util.sortsAreEqual);
