@@ -3,7 +3,7 @@
 Package.describe({
   name: 'npvn:tabular',
   summary: 'Temporary fix for aldeed:tabular (See issue #210)',
-  version: '1.4.1',
+  version: '1.4.2',
   git: 'https://github.com/npvn/meteor-tabular.git'
 });
 

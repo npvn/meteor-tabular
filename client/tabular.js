@@ -203,12 +203,15 @@ var tabularOnRendered = function () {
     template.tabular.recordsTotal = tableInfo.recordsTotal || 0;
     template.tabular.recordsFiltered = tableInfo.recordsFiltered || 0;
 
+    // XXX Removed this check so that the custom sub.isReady() method will work
+    // XXX even when there is no record. Suggestion for a better work-around
+    // XXX is welcomed.
     // In some cases, there is no point in subscribing to nothing
-    if (_.isEmpty(tableInfo) ||
-        template.tabular.recordsTotal === 0 ||
-        template.tabular.recordsFiltered === 0) {
-      return;
-    }
+    //if (_.isEmpty(tableInfo) ||
+    //    template.tabular.recordsTotal === 0 ||
+    //    template.tabular.recordsFiltered === 0) {
+    //  return;
+    //}
 
     template.tabular.tableDef.sub._handle = template.tabular.tableDef.sub.subscribe(
       template.tabular.docPub.get(),
