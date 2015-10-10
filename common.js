@@ -30,6 +30,14 @@ Tabular.Table = function (options) {
   // By default we use core `Meteor.subscribe`, but you can pass
   // a subscription manager like `sub: new SubsManager({cacheLimit: 20, expireIn: 3})`
   self.sub = options.sub || Meteor;
+  self.sub._dep = new Tracker.Dependency;
+
+  // Simulate the ready() method of a Meteor subscription handle
+  // Will reactively return true when table's subscription is completed
+  self.sub.isReady = function() {
+    self.sub._dep.depend();
+    return self.sub._handle && self.sub._handle.ready();
+  };
 
   self.onUnload = options.onUnload;
   self.allow = options.allow;

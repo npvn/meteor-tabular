@@ -210,11 +210,17 @@ var tabularOnRendered = function () {
       return;
     }
 
-    template.tabular.tableDef.sub.subscribe(
+    template.tabular.tableDef.sub._handle = template.tabular.tableDef.sub.subscribe(
       template.tabular.docPub.get(),
       tableName,
       tableInfo.ids || [],
       template.tabular.fields
+    ,
+      {
+        onReady: function() {
+          template.tabular.tableDef.sub._dep.changed();
+        }
+      }
     );
   });
 
